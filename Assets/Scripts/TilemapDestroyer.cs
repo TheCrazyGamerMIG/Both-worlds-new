@@ -29,35 +29,36 @@ public class TilemapDestroyer : MonoBehaviour
         {
             particleCount = 0;
         }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.tag == "DiggingTool")
-        {
-            
-            targetPoint = collision.transform.position;
-            //print("Collision! "+ targetPoint);
-            tilePos = Vector3Int.FloorToInt(targetPoint);
-            errodeTimer = errodeTimerC;
-            
-            
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-
         if (errodeTimer > 0f)
         {
             errodeTimer--;
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //for (int i = 0;i<collision.contactCaptureLayers.value;i++)
+        //{
+        //ContactPoint2D contact = collision.contacts[0];
+
+        if (collision.transform.tag == "DiggingTool")
+            {
+
+                targetPoint = collision.transform.position;
+                //print("Collision! "+ targetPoint);
+                tilePos = Vector3Int.FloorToInt(targetPoint);
+                errodeTimer = errodeTimerC;
+
+
+            }
+        //}
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+
+        
         if (errodeTimer <= 0f)
         {
             //print("And? " + tilePos);
-            tima.SetTile(tilePos, null);
-            tima.SetTile(tilePos + Vector3Int.down, null);
-            tima.SetTile(tilePos + Vector3Int.right, null);
-            tima.SetTile(tilePos + Vector3Int.left, null);
-            tima.SetTile(tilePos + Vector3Int.up, null);
 
             for (int i=0;i<4;i++)
             {
@@ -89,6 +90,11 @@ public class TilemapDestroyer : MonoBehaviour
                 particleCount++;
             }
 
+            tima.SetTile(tilePos, null);
+            tima.SetTile(tilePos + Vector3Int.down, null);
+            tima.SetTile(tilePos + Vector3Int.right, null);
+            tima.SetTile(tilePos + Vector3Int.left, null);
+            tima.SetTile(tilePos + Vector3Int.up, null);
             /*if (collision.GetComponent<CircleCollider2D>().radius >= 1f)
             {
                 print("BIG SHOT!!");

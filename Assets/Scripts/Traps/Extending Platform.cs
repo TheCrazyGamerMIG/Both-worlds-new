@@ -29,7 +29,7 @@ public class ExtendingPlatform : MonoBehaviour
             boxColl.enabled = true;
             anim.ResetTrigger("ToOff");
             anim.SetTrigger("ToOn");
-            if (extension>0)
+            if (extension>1)
             {
                 anim.SetTrigger("ToMiddleman");
             }               
@@ -39,18 +39,24 @@ public class ExtendingPlatform : MonoBehaviour
                 i = 0;
                 foreach (GameObject gm in extens)
                 {
+
                     segment = gm.GetComponent<ExtendingPlatformSegment>();
+                    if (i < extension-1)
+                    {
+
                     segment.wait = (100 * i + 100f);
                     //print(i+", "+(extension-1));
-                    if (i<extension-1)
+                    
+                    //print(segment.middleman);                    
+                    segment.stretch = true;
+                    }
+                    if (i<extension-2)
                     {
                         segment.middleman = true;
                     } else
                     {
                         segment.middleman = false;
                     }
-                    //print(segment.middleman);                    
-                    segment.stretch = true;
                     i++;
 
                 }

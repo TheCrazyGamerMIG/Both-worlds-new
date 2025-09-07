@@ -5603,7 +5603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 580031241105097235, guid: e96dfe3485954a94bbf80cb559681ed7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 580031241105097235, guid: e96dfe3485954a94bbf80cb559681ed7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5661,6 +5661,10 @@ PrefabInstance:
     - target: {fileID: -3219099140743169158, guid: d819a7e6282301e48a982f7fa255bb8a, type: 3}
       propertyPath: extended
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3219099140743169158, guid: d819a7e6282301e48a982f7fa255bb8a, type: 3}
+      propertyPath: extension
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7250169319614008456, guid: d819a7e6282301e48a982f7fa255bb8a, type: 3}
       propertyPath: m_Name
@@ -6337,6 +6341,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1175326907}
     m_Modifications:
+    - target: {fileID: -4405334563256784134, guid: 5b4e5409330ad004e975892e7e525f5e, type: 3}
+      propertyPath: extension
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6822715211363230185, guid: 5b4e5409330ad004e975892e7e525f5e, type: 3}
       propertyPath: m_Name
       value: Extending Platform 16x16
