@@ -4,14 +4,14 @@ public class Boulder : MonoBehaviour
 {
     private Animator anim;
     private Rigidbody2D rb;
-    public GameObject[] digBoxDirecion = new GameObject[8];
+    public GameObject[] digBoxDirection = new GameObject[8];
     public bool moveUp = false, moveDown = false, moveLeft = false, moveRight = false, isDigger = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        foreach (GameObject boxesYo in digBoxDirecion)
+        foreach (GameObject boxesYo in digBoxDirection)
         {
             BoxCollider2D bd = boxesYo.GetComponent<BoxCollider2D>();
             bd.enabled = false;
@@ -61,41 +61,41 @@ public class Boulder : MonoBehaviour
             {
                 if (moveUp)
                 {
-                    this.digBoxDirecion[0].GetComponent<BoxCollider2D>().enabled = true;
+                    this.digBoxDirection[0].GetComponent<BoxCollider2D>().enabled = true;
                 }
                 else if (moveDown)
                 {
-                    this.digBoxDirecion[2].GetComponent<BoxCollider2D>().enabled = true;
+                    this.digBoxDirection[2].GetComponent<BoxCollider2D>().enabled = true;
                 }
                 if (moveRight)
                 {
-                    this.digBoxDirecion[1].GetComponent<BoxCollider2D>().enabled = true;
+                    this.digBoxDirection[1].GetComponent<BoxCollider2D>().enabled = true;
                 }
                 else if (moveLeft)
                 {
-                    this.digBoxDirecion[4].GetComponent<BoxCollider2D>().enabled = true;
+                    this.digBoxDirection[4].GetComponent<BoxCollider2D>().enabled = true;
                 }
             } else if (rb.GetComponent<CircleCollider2D>().radius >= 1f)
             {
                 if (moveUp)
                 {
-                    this.digBoxDirecion[0].GetComponent<BoxCollider2D>().enabled = true;
-                    this.digBoxDirecion[1].GetComponent<BoxCollider2D>().enabled = true;
+                    this.digBoxDirection[0].GetComponent<BoxCollider2D>().enabled = true;
+                    this.digBoxDirection[1].GetComponent<BoxCollider2D>().enabled = true;
                 }
                 else if (moveDown)
                 {
-                    this.digBoxDirecion[4].GetComponent<BoxCollider2D>().enabled = true;
-                    this.digBoxDirecion[5].GetComponent<BoxCollider2D>().enabled = true;
+                    this.digBoxDirection[4].GetComponent<BoxCollider2D>().enabled = true;
+                    this.digBoxDirection[5].GetComponent<BoxCollider2D>().enabled = true;
                 }
                 if (moveRight)
                 {
-                    this.digBoxDirecion[2].GetComponent<BoxCollider2D>().enabled = true;
-                    this.digBoxDirecion[3].GetComponent<BoxCollider2D>().enabled = true;
+                    this.digBoxDirection[2].GetComponent<BoxCollider2D>().enabled = true;
+                    this.digBoxDirection[3].GetComponent<BoxCollider2D>().enabled = true;
                 }
                 else if (moveLeft)
                 {
-                    this.digBoxDirecion[6].GetComponent<BoxCollider2D>().enabled = true;
-                    this.digBoxDirecion[7].GetComponent<BoxCollider2D>().enabled = true;
+                    this.digBoxDirection[6].GetComponent<BoxCollider2D>().enabled = true;
+                    this.digBoxDirection[7].GetComponent<BoxCollider2D>().enabled = true;
                 }
 
             }
@@ -104,7 +104,7 @@ public class Boulder : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        foreach (GameObject boxesYo in digBoxDirecion)
+        foreach (GameObject boxesYo in digBoxDirection)
         {
             BoxCollider2D bd = boxesYo.GetComponent<BoxCollider2D>();
             bd.enabled = false;

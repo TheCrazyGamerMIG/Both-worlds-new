@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4455957b33e366c4192031ba135b4ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  digBoxDirecion:
+  digBoxDirection:
   - {fileID: 5830948178085521368}
   - {fileID: 7479603332239796454}
   - {fileID: 3768362380749837800}

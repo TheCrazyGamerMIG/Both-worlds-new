@@ -463,19 +463,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4455957b33e366c4192031ba135b4ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  digBoxDirecion:
+  digBoxDirection:
   - {fileID: 5507564901627999459}
   - {fileID: 6655743788836835653}
   - {fileID: 7745967628085846387}
   - {fileID: 838388790629136953}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   moveUp: 0
   moveDown: 0
   moveLeft: 0
   moveRight: 0
+  isDigger: 1
 --- !u!1 &7745967628085846387
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,18 +6,29 @@ public class TilemapDestroyer : MonoBehaviour
     Vector3Int tilePos;
     Vector3 targetPoint;
     float errodeTimer = 0f, errodeTimerC = 10f;
+    public GameObject digParticleObject;
+    public DigParticle digScript;
+    public GameObject[] particleList = new GameObject[256];
+    public int particleCount = 0;
+    public float particleDespawnTimer = 120f, particleDespawnTimerC = 120f;
 
     //Based on: Dynamic Tilemap Terrain Destruction in Unity - https://youtu.be/Lifz-qFOuWI?si=E1Gn-OohNJvQtdkH
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         tima = GetComponent<Tilemap>();
+        //digParticleObject = GetComponent<GameObject>();
+        //digScript = digParticleObject.GetComponent<DigParticle>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        particleDespawnTimerC--;
+        if (particleDespawnTimerC <= 0)
+        {
+            particleCount = 0;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,7 +36,7 @@ public class TilemapDestroyer : MonoBehaviour
         {
             
             targetPoint = collision.transform.position;
-            print("Collision! "+ targetPoint);
+            //print("Collision! "+ targetPoint);
             tilePos = Vector3Int.FloorToInt(targetPoint);
             errodeTimer = errodeTimerC;
             
@@ -41,12 +52,43 @@ public class TilemapDestroyer : MonoBehaviour
         }
         if (errodeTimer <= 0f)
         {
-            print("And? " + tilePos);
+            //print("And? " + tilePos);
             tima.SetTile(tilePos, null);
             tima.SetTile(tilePos + Vector3Int.down, null);
             tima.SetTile(tilePos + Vector3Int.right, null);
             tima.SetTile(tilePos + Vector3Int.left, null);
             tima.SetTile(tilePos + Vector3Int.up, null);
+
+            for (int i=0;i<4;i++)
+            {
+                particleList[particleCount] = Instantiate(digParticleObject);
+                particleList[particleCount].transform.position = tilePos;
+                digScript = particleList[particleCount].GetComponent<DigParticle>();
+                switch (Random.Range(0, 2))
+                {
+                    case 0:
+                        digScript.moveUp = true;
+                        digScript.moveDown = false;
+                        break;
+                    case 1:
+                        digScript.moveDown = true;
+                        digScript.moveUp = false;
+                        break;
+                }
+                switch (Random.Range(0, 2))
+                {
+                    case 0:
+                        digScript.moveLeft = true;
+                        digScript.moveRight = false;
+                        break;
+                    case 1:
+                        digScript.moveRight = true;
+                        digScript.moveLeft = false;
+                        break;
+                }
+                particleCount++;
+            }
+
             /*if (collision.GetComponent<CircleCollider2D>().radius >= 1f)
             {
                 print("BIG SHOT!!");
