@@ -63,6 +63,7 @@ public class Player1 : MonoBehaviour
         {
             playerHP -= 15;
             print("Damage taken! HP is "+playerHP+"/100");
+            rb.linearVelocity = new Vector2(-rb.linearVelocityX*2f, -rb.linearVelocityY*2f);
         }
     }
 }

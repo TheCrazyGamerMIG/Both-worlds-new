@@ -41,10 +41,10 @@ public class ExtendingPlatform : MonoBehaviour
                 {
 
                     segment = gm.GetComponent<ExtendingPlatformSegment>();
+                    //i = segment.transform.GetSiblingIndex();
+                    segment.wait = (100f * i + 100f);
                     if (i < extension-1)
                     {
-
-                    segment.wait = (100 * i + 100f);
                     //print(i+", "+(extension-1));
                     
                     //print(segment.middleman);                    
@@ -85,7 +85,7 @@ public class ExtendingPlatform : MonoBehaviour
                 foreach (GameObject gm in extens)
                 {
                     segment = gm.GetComponent<ExtendingPlatformSegment>();
-                    segment.wait = delay - (100 * i + 100f);
+                    segment.wait = delay - (100f * i + 100f);
                     if (i < extension+1)
                     {
                         segment.middleman = false;
